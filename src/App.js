@@ -11,10 +11,31 @@ const AppView = styled.div`
 `;
 
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      loading: false,
+      users: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://randomuser.me/api/?results=5")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data.results);
+        this.setState({
+          users: data.results,
+          loading: true,
+        });
+      });
+  }
+
   render() {
     return (
       <AppView>
-        <Card></Card>
+        <Card users={this.state.users}></Card>
       </AppView>
     );
   }
