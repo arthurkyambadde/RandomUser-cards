@@ -1,5 +1,6 @@
 import Card from "./Card/Card";
 import styled from "styled-components";
+import React from "react";
 
 const AppView = styled.div`
   width: 100vw;
@@ -9,12 +10,14 @@ const AppView = styled.div`
   align-items: center;
 `;
 
-function App() {
-  return (
-    <AppView>
-      <Card></Card>
-    </AppView>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <AppView>
+        <Card></Card>
+      </AppView>
+    );
+  }
 }
 
 export default App;
