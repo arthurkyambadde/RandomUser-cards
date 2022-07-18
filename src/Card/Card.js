@@ -21,6 +21,10 @@ const CardContainer = styled.div`
 `;
 
 class Card extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <CardContainer>

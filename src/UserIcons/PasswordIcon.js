@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-const Icon = styled.svg`
-  stroke: green;
-  width: 48px;
-  height: 48px;
-`;
+import { Icon } from "./UserIcons";
 
 class PasswordIcon extends React.Component {
   render() {

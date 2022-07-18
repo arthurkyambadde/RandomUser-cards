@@ -12,20 +12,36 @@ const User = styled.div`
   width: 100%;
   gap: 20px;
   margin-top: 30px;
+  list-style: none;
+`;
+
+export const Icon = styled.svg`
+  stroke: #888;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  &:hover {
+    stroke: #83ba43;
+    transform: translateY(0% to 100%);
+    border-top: 3px solid #83ba43;
+  }
 `;
 
 class UserIcons extends React.Component {
   render() {
-    return (
-      <User>
-        <NameIcon />
-        <EmailIcon />
-        <BirthdayIcon />
-        <LocationIcon />
-        <PhoneIcon />
-        <PasswordIcon />
-      </User>
-    );
+    const Icons = [
+      <NameIcon />,
+      <EmailIcon />,
+      <BirthdayIcon />,
+      <LocationIcon />,
+      <PhoneIcon />,
+      <PasswordIcon />,
+    ];
+
+    const ListItems = Icons.map((Icon, i) => <li key={i}>{Icon}</li>);
+
+    return <User>{ListItems}</User>;
   }
 }
 
