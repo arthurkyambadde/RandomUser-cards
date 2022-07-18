@@ -1,6 +1,7 @@
 import Card from "./Card/Card";
 import styled from "styled-components";
 import React from "react";
+import Calculator from "./Components/calculator/Calculator";
 
 const AppView = styled.div`
   width: 100vw;
@@ -35,7 +36,8 @@ class App extends React.Component {
   render() {
     return (
       <AppView>
-        <Card users={this.state.users}></Card>
+        {/* <Card users={this.state.users}></Card> */}
+        <Calculator />
       </AppView>
     );
   }
