@@ -50,6 +50,7 @@ class UserIcons extends React.Component {
       if (activeId === icon.id) {
         className = "active";
       }
+
       return (
         <ListItem
           className={className}

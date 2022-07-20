@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const NameWrapper = styled.div`
+const UserWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,20 +19,59 @@ const Name = styled.h1`
   margin: 0;
 `;
 
-class UserName extends React.Component {
+class UserInfo extends React.Component {
   render() {
     const userNames = this.props.name;
     // console.log(userNames);
+    const activeIconId = this.props.userInfo;
+    console.log(activeIconId);
+
+    const userObject = this.props.user;
+    console.log(userObject);
+    let title;
+    let userDetail;
+    if (activeIconId === "01") {
+      title = "name";
+      userDetail = `${userObject.name.title} ${userObject.name.first}  ${userObject.name.last} `;
+    }
+
+    if (activeIconId === "02") {
+      title = "email address";
+      userDetail = `${userObject.email} `;
+    }
+
+    let dob = new Date(userObject.dob.date)
+      .toLocaleString("en-US")
+      .slice(0, 10);
+    console.log(dob);
+
+    if (activeIconId === "03") {
+      title = "birthday";
+      userDetail = `${dob}`;
+    }
+
+    if (activeIconId === "04") {
+      title = "address";
+      userDetail = `${userObject.location.street.name} , ${userObject.location.street.number} `;
+    }
+
+    if (activeIconId === "05") {
+      title = "phone number";
+      userDetail = ` + ${userObject.cell} `;
+    }
+
+    if (activeIconId === "06") {
+      title = "password";
+      userDetail = `${userObject.login.password} `;
+    }
 
     return (
-      <NameWrapper>
-        <NameIntro>Hi My name is</NameIntro>
-        <Name>
-          {userNames.title} {userNames.first} {userNames.last}
-        </Name>
-      </NameWrapper>
+      <UserWrapper>
+        <NameIntro>Hi, my {title} is</NameIntro>
+        <Name>{userDetail}</Name>
+      </UserWrapper>
     );
   }
 }
 
-export default UserName;
+export default UserInfo;

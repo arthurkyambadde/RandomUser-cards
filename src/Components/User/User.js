@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import UserName from "../UserDetails/UserName";
+import UserInfo from "../UserDetails/UserName";
 import UserIcons from "../../UserIcons/UserIcons";
 
 const UserContainer = styled.ul`
@@ -44,7 +44,7 @@ class User extends React.Component {
     return (
       <UserContainer>
         <UserImage src={user.picture.large} />
-        <UserName name={user.name} />
+        <UserInfo userInfo={this.state.activeId} user={user} />
         <UserIcons
           activeId={this.state.activeId}
           changeActiveIcon={this.changeActiveIcon}
