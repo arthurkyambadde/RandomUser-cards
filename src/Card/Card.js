@@ -20,7 +20,7 @@ class Card extends React.Component {
     console.log(usersList);
 
     const userListItem = usersList.map((user) => (
-      <ListItem>
+      <ListItem key={user.name.first}>
         <User userItem={user}></User>
       </ListItem>
     ));

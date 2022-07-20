@@ -9,6 +9,8 @@ import PasswordIcon from "./PasswordIcon";
 
 const User = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   gap: 20px;
   margin-top: 30px;
@@ -30,18 +32,22 @@ export const Icon = styled.svg`
 
 class UserIcons extends React.Component {
   render() {
-    const Icons = [
-      <NameIcon />,
-      <EmailIcon />,
-      <BirthdayIcon />,
-      <LocationIcon />,
-      <PhoneIcon />,
-      <PasswordIcon />,
+    const iconsList = [
+      { id: "01", name: "name", icon: <NameIcon /> },
+      { id: "02", name: "email", icon: <EmailIcon /> },
+      { id: "03", name: "birthday", icon: <BirthdayIcon /> },
+      { id: "04", name: "location", icon: <LocationIcon /> },
+      { id: "05", name: "phoneNumber", icon: <PhoneIcon /> },
+      { id: "06", name: "password", icon: <PasswordIcon /> },
+
+      ,
     ];
 
-    const ListItems = Icons.map((Icon, i) => <li key={i}>{Icon}</li>);
+    const listItems = iconsList.map((icon) => {
+      return <li key={icon.id}>{icon.icon}</li>;
+    });
 
-    return <User>{ListItems}</User>;
+    return <User>{listItems}</User>;
   }
 }
 
