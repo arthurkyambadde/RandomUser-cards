@@ -23,7 +23,10 @@ export const Icon = styled.svg`
   height: 48px;
   cursor: pointer;
   transition: all 0.25s ease-out;
-  &:hover {
+`;
+
+const ListItem = styled.li`
+  &.active > div > svg {
     stroke: #83ba43;
     transform: translateY(0% to 100%);
     border-top: 3px solid #83ba43;
@@ -32,6 +35,7 @@ export const Icon = styled.svg`
 
 class UserIcons extends React.Component {
   render() {
+    const { activeId } = this.props;
     const iconsList = [
       { id: "01", name: "name", icon: <NameIcon /> },
       { id: "02", name: "email", icon: <EmailIcon /> },
@@ -39,12 +43,22 @@ class UserIcons extends React.Component {
       { id: "04", name: "location", icon: <LocationIcon /> },
       { id: "05", name: "phoneNumber", icon: <PhoneIcon /> },
       { id: "06", name: "password", icon: <PasswordIcon /> },
-
-      ,
     ];
 
     const listItems = iconsList.map((icon) => {
-      return <li key={icon.id}>{icon.icon}</li>;
+      let className = "";
+      if (activeId === icon.id) {
+        className = "active";
+      }
+      return (
+        <ListItem
+          className={className}
+          key={icon.id}
+          onMouseEnter={() => this.props.changeActiveIcon(icon.id)}
+        >
+          {icon.icon}
+        </ListItem>
+      );
     });
 
     return <User>{listItems}</User>;

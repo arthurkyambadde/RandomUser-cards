@@ -21,10 +21,15 @@ const Name = styled.h1`
 
 class UserName extends React.Component {
   render() {
+    const userNames = this.props.name;
+    // console.log(userNames);
+
     return (
       <NameWrapper>
         <NameIntro>Hi My name is</NameIntro>
-        <Name>Carrie Nicholas</Name>
+        <Name>
+          {userNames.title} {userNames.first} {userNames.last}
+        </Name>
       </NameWrapper>
     );
   }
