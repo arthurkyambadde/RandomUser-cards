@@ -25,14 +25,30 @@ const UserImage = styled.img`
 `;
 
 class User extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeId: "01",
+    };
+  }
+
+  changeActiveIcon = (id) => {
+    this.setState({
+      activeId: id,
+    });
+  };
+
   render() {
     const user = this.props.userItem;
 
     return (
       <UserContainer>
         <UserImage src={user.picture.large} />
-        <UserName />
-        <UserIcons />
+        <UserName name={user.name} />
+        <UserIcons
+          activeId={this.state.activeId}
+          changeActiveIcon={this.changeActiveIcon}
+        />
       </UserContainer>
     );
   }
