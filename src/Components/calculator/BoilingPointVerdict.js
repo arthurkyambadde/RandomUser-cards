@@ -2,11 +2,10 @@ import React from "react";
 
 class BoilingPointVerdict extends React.Component {
   render() {
-    if (this.props.celsius >= 100) {
+    if (this.props.celcius >= 100) {
       return <div>The water will boil</div>;
-    } else {
-      return <div>The water will not boil</div>;
     }
+    return <div>The water will not boil</div>;
   }
 }
 

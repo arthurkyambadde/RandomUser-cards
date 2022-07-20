@@ -9,6 +9,13 @@ const UserContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 700px;
+  max-height: 500px;
+  min-height: 200px;
+  min-width: 400px;
+  border: 3px solid grey;
+  border-radius: 6px;
+  padding: 20px;
 `;
 
 const UserImage = styled.img`
@@ -20,9 +27,11 @@ const UserImage = styled.img`
 
 class User extends React.Component {
   render() {
+    const user = this.props.userItem;
+
     return (
       <UserContainer>
-        <UserImage src={Image} />
+        <UserImage src={user.picture.large} />
         <UserName />
         <UserIcons />
       </UserContainer>

@@ -1,36 +1,30 @@
 import React from "react";
-import Users from "../Components/Users/Users";
 import styled from "styled-components";
-
+import User from "../Components/User/User";
 const CardContainer = styled.div`
-  position: absolute;
-  top: 50%;
-
-  transform: translateX(50%);
-  transform: translateY(-50%);
-  max-width: 700px;
-  max-height: 500px;
-  min-height: 200px;
-  min-width: 400px;
-  border: 1px solid grey;
-  border-radius: 6px;
-  padding: 20px;
+  padding: 30px;
   display: flex;
+  flex-direction: column;
+  gap: 30px;
   justify-content: center;
   align-items: center;
 `;
 
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const ListItem = styled.li`
+  list-style: none;
+`;
 
+class Card extends React.Component {
   render() {
-    return (
-      <CardContainer>
-        <Users />
-      </CardContainer>
-    );
+    const usersList = this.props.users;
+    console.log(usersList);
+
+    const userListItem = usersList.map((user) => (
+      <ListItem>
+        <User userItem={user}></User>
+      </ListItem>
+    ));
+    return <CardContainer>{userListItem}</CardContainer>;
   }
 }
 
