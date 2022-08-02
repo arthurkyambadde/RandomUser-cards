@@ -36,6 +36,8 @@ const LoadingSpinner = styled.div`
   }
 `;
 
+const ThemeContext = React.createContext("light");
+
 class App extends React.Component {
   constructor() {
     super();
@@ -59,14 +61,17 @@ class App extends React.Component {
   }
 
   render() {
+    <ThemeContext.Provider></ThemeContext.Provider>;
     if (this.state.loading === false) {
       return <LoadingSpinner></LoadingSpinner>;
     } else {
       return (
-        <AppContainer>
-          <ThemeButton />
-          <Card users={this.state.users}></Card>;{/* <Calculator /> */}
-        </AppContainer>
+        <ThemeContext.Provider value="dark">
+          <AppContainer>
+            <ThemeButton />
+            <Card users={this.state.users}></Card>;{/* <Calculator /> */}
+          </AppContainer>
+        </ThemeContext.Provider>
       );
     }
   }

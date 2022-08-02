@@ -7,12 +7,10 @@ const ChangeThemeButton = styled.button`
   background-color: #ededed;
   border-radius: 15px;
   border: 1px solid #d6bcd6;
-  display: inline-block;
   cursor: pointer;
   color: green;
   font-size: 17px;
   padding: 7px 25px;
-  text-decoration: none;
   text-shadow: 0px 1px 0px #e1e2ed;
   position: absolute;
   top: 50px;
@@ -21,6 +19,9 @@ const ChangeThemeButton = styled.button`
   &:hover {
     background: linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
     background-color: #bab1ba;
+  }
+  &:active {
+    transform: scale(1.1);
   }
 `;
 
