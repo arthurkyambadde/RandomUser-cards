@@ -1,8 +1,13 @@
 import Card from "./Card/Card";
 import styled, { keyframes } from "styled-components";
 import React from "react";
+import ThemeButton from "./Theme/ThemeButton";
 
 // import Calculator from "./Components/calculator/Calculator";
+
+const AppContainer = styled.div`
+  padding: 100px;
+`;
 
 const rotate = keyframes`
   from {
@@ -58,9 +63,10 @@ class App extends React.Component {
       return <LoadingSpinner></LoadingSpinner>;
     } else {
       return (
-        <div>
+        <AppContainer>
+          <ThemeButton />
           <Card users={this.state.users}></Card>;{/* <Calculator /> */}
-        </div>
+        </AppContainer>
       );
     }
   }
