@@ -3,12 +3,6 @@ import styled, { keyframes } from "styled-components";
 import React from "react";
 
 // import Calculator from "./Components/calculator/Calculator";
-const AppView = styled.div`
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
 
 const rotate = keyframes`
   from {
@@ -60,19 +54,15 @@ class App extends React.Component {
   }
 
   render() {
-    let display;
-
     if (this.state.loading === false) {
-      return (display = <LoadingSpinner>loading....</LoadingSpinner>);
+      return <LoadingSpinner></LoadingSpinner>;
     } else {
-      return (display = (
+      return (
         <div>
           <Card users={this.state.users}></Card>;{/* <Calculator /> */}
         </div>
-      ));
+      );
     }
-
-    return <AppView>{display}</AppView>;
   }
 }
 
