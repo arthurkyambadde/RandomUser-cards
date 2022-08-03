@@ -2,6 +2,7 @@ import Card from "./Card/Card";
 import styled, { keyframes } from "styled-components";
 import React from "react";
 import ThemeButton from "./Theme/ThemeButton";
+import { ThemeContext } from "./context/ThemeContext";
 
 // import Calculator from "./Components/calculator/Calculator";
 
@@ -36,8 +37,6 @@ const LoadingSpinner = styled.div`
   }
 `;
 
-const ThemeContext = React.createContext("light");
-
 class App extends React.Component {
   constructor() {
     super();
@@ -45,6 +44,7 @@ class App extends React.Component {
     this.state = {
       loading: false,
       users: [],
+      activeTheme: "light",
     };
   }
 
@@ -60,16 +60,25 @@ class App extends React.Component {
       });
   }
 
+  toggleTheme = () => {
+    const { activeTheme } = this.state;
+    this.setState({
+      activeTheme: activeTheme === "light" ? "dark" : "light",
+    });
+    console.log(activeTheme);
+    console.log("clicked------------");
+  };
+
   render() {
-    <ThemeContext.Provider></ThemeContext.Provider>;
+    const { activeTheme } = this.state;
     if (this.state.loading === false) {
       return <LoadingSpinner></LoadingSpinner>;
     } else {
       return (
-        <ThemeContext.Provider value="dark">
+        <ThemeContext.Provider value={activeTheme}>
           <AppContainer>
-            <ThemeButton />
-            <Card users={this.state.users}></Card>;{/* <Calculator /> */}
+            <ThemeButton onClick={this.toggleTheme} />
+            <Card users={this.state.users}></Card>
           </AppContainer>
         </ThemeContext.Provider>
       );

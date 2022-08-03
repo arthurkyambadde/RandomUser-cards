@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import UserInfo from "../UserDetails/UserName";
 import UserIcons from "../../UserIcons/UserIcons";
+// import classes from "./App.module.css";
 
-const UserContainer = styled.ul`
+const UserContainer = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -25,7 +25,7 @@ export const Icon = styled.svg`
   transition: all 0.25s ease-out;
 `;
 
-const ListItem = styled.li`
+const ListItem = styled.ul`
   &.active > div > svg {
     stroke: #83ba43;
     transform: translateY(0% to 100%);

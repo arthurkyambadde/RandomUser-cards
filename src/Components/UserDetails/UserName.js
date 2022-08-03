@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { ThemeContext } from "../../context/ThemeContext";
 
 const UserWrapper = styled.div`
   width: 100%;
@@ -15,19 +16,24 @@ const NameIntro = styled.p`
 
 const Name = styled.h1`
   font-weight: 500;
-  color: #111;
+  color: ${({ theme }) => (theme === "light" ? "#000" : "red")};
   margin: 0;
 `;
 
 class UserInfo extends React.Component {
+  static contextType = ThemeContext;
+
   render() {
-    const userNames = this.props.name;
+    console.log(ThemeContext);
+    console.log(this.context);
+    // console.log("~~~~~~~###############");
+    // const userNames = this.props.name;
     // console.log(userNames);
     const activeIconId = this.props.userInfo;
-    console.log(activeIconId);
+    // console.log(activeIconId);
 
     const userObject = this.props.user;
-    console.log(userObject);
+    // console.log(userObject);
     let title;
     let userDetail;
     if (activeIconId === "01") {
@@ -43,7 +49,7 @@ class UserInfo extends React.Component {
     let dob = new Date(userObject.dob.date)
       .toLocaleString("en-US")
       .slice(0, 10);
-    console.log(dob);
+    // console.log(dob);
 
     if (activeIconId === "03") {
       title = "birthday";
@@ -66,9 +72,9 @@ class UserInfo extends React.Component {
     }
 
     return (
-      <UserWrapper>
+      <UserWrapper theme={this.context}>
         <NameIntro>Hi, my {title} is</NameIntro>
-        <Name>{userDetail}</Name>
+        <Name theme={this.context}>{userDetail}</Name>
       </UserWrapper>
     );
   }

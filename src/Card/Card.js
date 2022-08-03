@@ -1,30 +1,26 @@
 import React from "react";
 import styled from "styled-components";
+// import { AppThemeContext } from "../App";
 import User from "../Components/User/User";
-const CardContainer = styled.div`
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-`;
+import { ThemeContext } from "../context/ThemeContext";
 
-const ListItem = styled.li`
+const ListItem = styled.ul`
   list-style: none;
+
+  background-color: ${({ theme }) => (theme === "light" ? "#fff" : "#000")};
 `;
 
 class Card extends React.Component {
+  static contextType = ThemeContext;
   render() {
     const usersList = this.props.users;
-    console.log(usersList);
 
     const userListItem = usersList.map((user) => (
-      <ListItem key={user.name.first}>
+      <ListItem theme={this.context} key={user.name.first}>
         <User userItem={user}></User>
       </ListItem>
     ));
-    return <CardContainer>{userListItem}</CardContainer>;
+    return <>{userListItem}</>;
   }
 }
 

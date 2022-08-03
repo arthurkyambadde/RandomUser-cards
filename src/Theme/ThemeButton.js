@@ -27,7 +27,9 @@ const ChangeThemeButton = styled.button`
 
 class ThemeButton extends React.Component {
   render() {
-    return <ChangeThemeButton>Theme</ChangeThemeButton>;
+    return (
+      <ChangeThemeButton onClick={this.props.onClick}>Theme</ChangeThemeButton>
+    );
   }
 }
 
